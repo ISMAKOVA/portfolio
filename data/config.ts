@@ -65,6 +65,16 @@ export const skills: ISkills[] = [
       caption: 'PostgreSQL',
       icon: '',
       link: 'https://www.postgresql.org/'
+    },  
+    {
+      caption: 'Photoshop',
+      icon: '',
+      link: ''
+    },
+    {
+      caption: 'Figma',
+      icon: '',
+      link: ''
     },
   
 ];

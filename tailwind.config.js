@@ -21,8 +21,8 @@ module.exports = {
         'large': '90px'
       },
       animation: {
-        marquee: 'marquee 35s linear infinite',
-        marquee2: 'marquee2 35s linear infinite',
+        marquee: 'marquee 65s linear infinite',
+        marquee2: 'marquee2 65s linear infinite',
       },
       keyframes: {
         marquee: {

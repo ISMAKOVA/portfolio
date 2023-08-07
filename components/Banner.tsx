@@ -84,7 +84,7 @@ export default function Banner() {
       </motion.div>
     </div>
     <motion.div 
-      initial={{ opacity: 0, x: 80, y: 80 }}
+      initial={{ opacity: 0, x: 90, y: 0 }}
       animate={{ opacity: 1, x: 0, y: 0 }}
       transition={{ 
         ease: "easeInOut",

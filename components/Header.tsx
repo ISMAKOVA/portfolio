@@ -27,7 +27,7 @@ export default function Header() {
   };
 
   return (
-    <nav className="flex w-full justify-between align-middle mt-8 gap-8 px-28 ">
+    <nav className="flex w-full justify-between align-middle mt-8 gap-8 px-28">
       <Link href={"/"} className="grow font-bold group">
         ismakova{<span className="group-hover:text-teal-200 transition-colors delay-1 duration-200">.</span>}
       </Link>
