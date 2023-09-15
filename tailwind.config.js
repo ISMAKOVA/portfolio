@@ -21,18 +21,13 @@ module.exports = {
         'large': '90px'
       },
       animation: {
-        marquee: 'marquee 65s linear infinite',
-        marquee2: 'marquee2 65s linear infinite',
+        'infinite-scroll': 'infinite-scroll 60s linear infinite',
       },
       keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
-        },
-        marquee2: {
-          '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(0%)' },
-        },
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        }
       },
     },
   },
