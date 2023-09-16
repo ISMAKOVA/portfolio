@@ -36,6 +36,12 @@ export default function Header() {
                 {<span className="group-hover:text-teal-200 transition-colors delay-1 duration-200">.</span>}
             </Link>
             <Link
+                href={"/"}
+                className="hover:text-teal-200 transition-colors delay-1 duration-200"
+            >
+                home
+            </Link>
+            <Link
                 href={"/work"}
                 className="hover:text-teal-200 transition-colors delay-1 duration-200"
             >

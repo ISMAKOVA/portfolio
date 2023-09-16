@@ -81,10 +81,11 @@ export const skills: ISkills[] = [
 
 
 import {
-  Sun,
-  Sparkles,
-  MoonStar,
-  type Icon as LucideIcon,
+    Sun,
+    Sparkles,
+    MoonStar,
+    Music,
+    type Icon as LucideIcon,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -92,6 +93,7 @@ export const Icons = {
   sun: Sun,
   sparkles: Sparkles,
   moonStar: MoonStar,
+  music: Music,
 }
 
 export const default_animation = {
