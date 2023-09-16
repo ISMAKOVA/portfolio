@@ -14,7 +14,7 @@ export default function Banner() {
                       {...default_animation}
                       className="lg:hidden self-center pb-6">
                       <Image
-                          src="/profile-square.jpg"
+                          src="./profile-square.jpg"
                           height={882}
                           width={496}
                           className="rounded-full shadow-lg gradient-radial w-24 h-24"
@@ -63,7 +63,7 @@ export default function Banner() {
                   }}
                   className="hidden lg:block">
                   <Image
-                      src="/profile-vertical.jpg"
+                      src="./profile-vertical.jpg"
                       height={882}
                       width={496}
                       className="rounded-large shadow-lg gradient-radial lg:w-64 md:w-48"

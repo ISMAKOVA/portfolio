@@ -61,7 +61,7 @@ export default function Home() {
                                            width="100%"
                                            height="130%"
                                            clipPath="url(#shape)"
-                                           href="/my-photo.jpg"
+                                           href="./my-photo.jpg"
                                            preserveAspectRatio="none">
                                     </image>
                                     <clipPath id="shape">
