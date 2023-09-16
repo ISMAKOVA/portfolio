@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import {default_animation} from "@/data/config";
 
+
 export default function Banner() {
   return (
       <section className="relative">
@@ -13,7 +14,7 @@ export default function Banner() {
                       {...default_animation}
                       className="lg:hidden self-center pb-6">
                       <Image
-                          src="/profile_square.jpg"
+                          src="/profile-square.jpg"
                           height={882}
                           width={496}
                           className="rounded-full shadow-lg gradient-radial w-24 h-24"
@@ -62,7 +63,7 @@ export default function Banner() {
                   }}
                   className="hidden lg:block">
                   <Image
-                      src="/profile_vertical.jpg"
+                      src="/profile-vertical.jpg"
                       height={882}
                       width={496}
                       className="rounded-large shadow-lg gradient-radial lg:w-64 md:w-48"

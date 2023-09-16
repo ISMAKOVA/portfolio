@@ -2,7 +2,6 @@ import Layout from "@/components/layout";
 import {skills} from "@/data/config";
 import React from "react";
 import Banner from "@/components/banner";
-import Image from "next/image";
 
 
 export default function Home() {
@@ -18,7 +17,7 @@ export default function Home() {
                         <div
                             className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
                         >
-                            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll">
+                            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-2 sm:[&_li]:mx-8 animate-infinite-scroll">
                                 {skills.map((skill) => (
                                     <li
                                         key={skill.caption + "_scroll1"}
@@ -28,7 +27,7 @@ export default function Home() {
                                     </li>
                                 ))}
                             </ul>
-                            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll">
+                            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-2 sm:[&_li]:mx-8 animate-infinite-scroll">
                                 {skills.map((skill) => (
                                     <li
                                         key={skill.caption + "_scroll2"}
@@ -62,7 +61,7 @@ export default function Home() {
                                            width="100%"
                                            height="130%"
                                            clip-path="url(#shape)"
-                                           href="/my_photo.jpg"
+                                           href="/my-photo.jpg"
                                            preserveAspectRatio="none">
                                     </image>
                                     <clipPath id="shape">
@@ -74,7 +73,7 @@ export default function Home() {
                                 </svg>
                             </div>
                         </div>
-                        <div className="text-justify">
+                        <div className="text-justify text-xs sm:text-base md:text-lg">
                             <p className="mb-2">
                                 Since 2020, I’ve been crafting UIs with React, specializing in
                                 creating interfaces and solving business tasks.{" "}
