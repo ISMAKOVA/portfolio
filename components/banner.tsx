@@ -38,7 +38,7 @@ export default function Banner() {
                 setTrack(currentlyPlayingTrack.item);
                 setTrackStatus("Currently playing");
             }
-            else {
+            else if (topTracks?.items) {
                 const topTrack = topTracks.items.at(0);
                 setTrack(topTrack);
                 setTrackStatus("On repeat");

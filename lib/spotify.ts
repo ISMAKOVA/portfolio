@@ -1,3 +1,4 @@
+"use server"
 import {AccessToken, Track} from "spotify-types";
 import * as querystring from "querystring";
 
@@ -7,7 +8,6 @@ const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 
 const BASIC = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString("base64");
-
 
 export const getAccessToken = async (): Promise<AccessToken> => {
     const response = await fetch(TOKEN_ENDPOINT, {
