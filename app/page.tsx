@@ -14,6 +14,7 @@ export default function Home() {
             {/* skills */}
             <section className="relative h-1/4 flex flex-col justify-center items-center overflow-hidden">
                 <div className="w-full mx-auto py-24">
+                    {/*<div className="absolute text-8xl right-24 top-28">Skills</div>*/}
                     <div className="text-center">
                         <div
                             className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
@@ -22,7 +23,7 @@ export default function Home() {
                                 {skills.map((skill) => (
                                     <li
                                         key={skill.caption + "_scroll1"}
-                                        className="my-2 py-2.5 px-8 mx-2 bg-neutral-50 rounded-large shadow-md hover:shadow-inner dark:bg-neutral-800 dark:hover:text-teal-200 transition-all duration-200 delay-75"
+                                        className="my-2 py-2.5 px-8 mx-2 bg-neutral-50 rounded-large shadow-md hover:shadow-inner dark:backdrop-blur-sm dark:bg-white/20 dark:hover:text-teal-200 transition-all duration-200 delay-75"
                                     >
                                         <a href={skill.link}>{skill.caption}</a>
                                     </li>
@@ -32,7 +33,7 @@ export default function Home() {
                                 {skills.map((skill) => (
                                     <li
                                         key={skill.caption + "_scroll2"}
-                                        className="my-2 py-2.5 px-8 bg-neutral-50 rounded-large shadow-md hover:shadow-inner dark:bg-neutral-800 dark:hover:text-teal-200 transition-all duration-200 delay-75"
+                                        className="my-2 py-2.5 px-8 bg-neutral-50 rounded-large shadow-md hover:shadow-inner dark:backdrop-blur-sm dark:bg-white/20 dark:hover:text-teal-200 transition-all duration-200 delay-75"
                                     >
                                         <a href={skill.link}>{skill.caption}</a>
                                     </li>
@@ -40,6 +41,7 @@ export default function Home() {
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </section>
 
