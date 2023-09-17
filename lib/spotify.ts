@@ -1,4 +1,3 @@
-"use server"
 import {AccessToken, Track} from "spotify-types";
 import * as querystring from "querystring";
 
