@@ -3,6 +3,6 @@ import React from 'react'
 
 export default function layout() {
   return (
-    <Layout>work</Layout>
+    <Layout><div className="h-screen flex justify-center items-center">work</div></Layout>
   )
 }

@@ -1,8 +1,12 @@
 "use client"
-import React, {MouseEvent, useCallback, useState} from 'react';
+import React, {MouseEvent, useCallback, useEffect, useState} from 'react';
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {default_animation, Icons} from "@/data/config";
+import {getCurrentlyPlayingTrack, getTopTracks} from "@/lib/spotify";
+import {Track} from "spotify-types";
+import Link from "next/link";
+import {cn} from "@/app/utils";
 
 function throttle<T extends (...args: any[]) => any>(
     func: T,
@@ -19,8 +23,28 @@ function throttle<T extends (...args: any[]) => any>(
     };
 }
 
+type TrackStatus = "On repeat" | "Currently playing";
+
 export default function Banner() {
     const [rotate, setRotate] = useState({x: 0, y: 0});
+    const [track, setTrack] = useState<Track>();
+    const [trackStatus, setTrackStatus] = useState<TrackStatus>();
+
+    useEffect(() => {
+        (async () => {
+            const topTracks = await getTopTracks();
+            const currentlyPlayingTrack = await getCurrentlyPlayingTrack();
+            if (currentlyPlayingTrack?.item) {
+                setTrack(currentlyPlayingTrack.item);
+                setTrackStatus("Currently playing");
+            }
+            else {
+                const topTrack = topTracks.items.at(0);
+                setTrack(topTrack);
+                setTrackStatus("On repeat");
+            }
+        })();
+    }, []);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const onMouseMove = useCallback(
@@ -43,6 +67,8 @@ export default function Banner() {
         setRotate({x: 0, y: 0});
     };
 
+    const artists = track?.artists?.map(it => it.name).join(", ");
+    const trackHref = track?.external_urls.spotify ?? '/';
     return (
         <section className="relative">
             <div className="flex h-1/4 md:h-[35em] w-full justify-between flex-col lg:flex-row box-border">
@@ -114,47 +140,50 @@ export default function Banner() {
                     />
                 </motion.div>
 
-                <motion.div
+                {track && <motion.div
                     initial={{opacity: 0, x: -60, y: -10}}
                     animate={{opacity: 1, x: 0, y: 0}}
                     transition={{
                         ease: "easeInOut",
-                        duration: 1,
-                        delay: 0.2
+                        duration: 1
                     }}
-                    className={"absolute -top-2 right-44 hidden lg:block transition-colors delay-1 duration-200"}>
-                    <div
-                        className="group w-64 h-14 flex justify-center items-center px-2 py-4 backdrop-blur-sm bg-white/30 rounded-large gap-5"
-                        style={{
-                            transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) scale3d(1, 1, 1)`,
-                            transition: "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s",
-                        }}
-                        onMouseMove={onMouseMove}
-                        onMouseLeave={onMouseLeave}
-                    >
-                        {<Icons.music
-                            className="w-4 h-4 md:w-5 md:h-5 group-hover:text-teal-200 "/>}
-                        <div className="flex flex-col">
-                             <span className="text-xs">On repeat</span>
-                            <span className="text-sm">Twenty one pilots - Ride</span>
+                    className={"absolute -top-2 right-44 hidden lg:block transition-colors delay-1 duration-200 "}>
+                    <Link href={trackHref}>
+                        <div
+                            className="group  flex justify-center items-center px-6 py-4 backdrop-blur-sm bg-white/30 rounded-large gap-5"
+                            style={{
+                                transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) scale3d(1, 1, 1)`,
+                                transition: "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s",
+                            }}
+                            onMouseMove={onMouseMove}
+                            onMouseLeave={onMouseLeave}
+                        >
+                            <Icons.music className={cn("w-4 h-4 md:w-5 md:h-5 transition-colors delay-1 duration-200",
+                                trackStatus === "Currently playing" ? "text-teal-200" : "group-hover:text-teal-200")}/>
+                            <div className="flex flex-col">
+                                <span className="text-xs">{trackStatus}</span>
+                                <span className="text-sm flex flex-col">
+                                    <p className="font-bold overflow-hidden truncate max-w-64">{track?.name}</p>
+                                    <p className="overflow-hidden truncate max-w-64">by {artists}</p>
+
+                                </span>
+
+                            </div>
                         </div>
+                    </Link>
+                </motion.div>}
 
-                    </div>
-
-                </motion.div>
-
-                <motion.div
+                {track && <motion.div
                     initial={{opacity: 0, x: -90, y: -65}}
                     animate={{opacity: 1, x: 0, y: 0}}
                     transition={{
                         ease: "easeInOut",
-                        duration: 1.2,
-                        delay: 0.2
+                        duration: 1.2
                     }}
                     className="absolute top-32 right-80 hidden lg:block transition-colors delay-1 duration-200">
 
                     <div
-                        className="group w-14 h-14 p-6 backdrop-blur-sm bg-white/30 rounded-large flex flex-col justify-center items-center"
+                        className="group w-14 h-14 p-6 backdrop-blur-sm bg-white/30 rounded-large flex flex-col justify-center items-center text-center"
                         style={{
                             transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) scale3d(1, 1, 1)`,
                             transition: "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s",
@@ -162,10 +191,11 @@ export default function Banner() {
                         onMouseMove={onMouseMove}
                         onMouseLeave={onMouseLeave}
                     >
-                        <span className="group-hover:text-teal-200">60</span>
-                        <span className="text-xs">wpm</span>
+                        {/*<span className="group-hover:text-teal-200">60</span>*/}
+                        {/*<span className="text-xs">wpm</span>*/}
+                        <span className="text-xs">not impl</span>
                     </div>
-                </motion.div>
+                </motion.div>}
             </div>
         </section>
     )

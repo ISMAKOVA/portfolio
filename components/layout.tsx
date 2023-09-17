@@ -21,7 +21,6 @@ export default function Layout({children}: Props) {
                             transition={{
                                 ease: "easeInOut",
                                 duration: 1,
-                                delay: 0.4,
                             }}
                         >
                             {children}

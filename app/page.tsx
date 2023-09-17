@@ -53,11 +53,11 @@ export default function Home() {
                         <div className="lg:w-[140em]">
                             <div className={"w-full"}>
                                 <Blob>
-                                    <image x="0" y="-50"
+                                    <image x="-10" y="25"
                                            width="100%"
-                                           height="130%"
+                                           height="100%"
                                            clipPath="url(#shape)"
-                                           href="./my-photo.jpg"
+                                           href="./photo.jpg"
                                            preserveAspectRatio="none">
                                     </image>
                                 </Blob>
